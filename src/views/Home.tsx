@@ -1,7 +1,7 @@
 import {MediaItem} from 'hybrid-types/DBTypes';
 import {useState} from 'react';
-import MediaRow from './MediaRow';
-import SingleView from './SingleView';
+import MediaRow from '../components/MediaRow';
+import SingleView from '../components/SingleView';
 
 const mediaArray: MediaItem[] = [
   {
@@ -52,7 +52,6 @@ const Home = () => {
       {selectedItem && (
         <SingleView item={selectedItem} setSelectedItem={setSelectedItem} />
       )}
-      <h2>My Media</h2>
       <table>
         <thead>
           <tr>

@@ -4,30 +4,37 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(255, 255, 255);
   background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-align: center;
 }
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
+  background-image: url(background.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 /* nav */
 nav ul {
   list-style-type: none;
-  margin: 0;
+  margin: auto;
+  margin-bottom: 1em;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: #154bfa;
   display: flex;
   justify-content: flex-end;
+  width: 90%;
+  border-radius: 1em;
 }
 
 nav a {
@@ -43,6 +50,13 @@ nav a:hover {
 }
 
 /* media item card */
+table {
+  background-color: #242424;
+  padding: 1em;
+  margin: auto;
+  border-radius: 1em;
+}
+
 td {
   padding: 1rem;
 }
@@ -61,7 +75,7 @@ a:hover {
 td a {
   color: white;
   text-decoration: none;
-  background-color: #363636;
+  background-color: #154bfa;
   color: white;
   border: none;
   padding: 0.5rem;
@@ -70,11 +84,13 @@ td a {
 /* media item dialog */
 dialog {
   position: fixed;
-  height: 90%;
+  height: 75%;
   background: rgba(0, 0, 0, 0.8);
   z-index: 9999;
   color: rgba(255, 255, 255, 0.87);
   width: 60%;
+  top: 10%;
+  border: none;
 }
 
 dialog img,
@@ -131,14 +147,14 @@ button, .view-button {
   margin: 10px 0;
   padding: 10px;
   border-radius: 5px;
-  background-color: #363636;
+  background-color: #154bfa;
   color: white;
   border: none;
   cursor: pointer;
   position: absolute;
   z-index: 10;
-  top: 10px;
-  left: 10px;
+  top: 200px;
+  left: 140px;
 }
 
 .view-button {
@@ -146,3 +162,10 @@ button, .view-button {
   z-index: 1;
 }
 
+footer {
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #154bfa;
+  padding: 1em;
+  width: 90%;
+}
