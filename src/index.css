@@ -102,9 +102,10 @@ video {
 /* single view */
 img,
 video {
-  max-width: 100%;
+  max-width: 60%;
   position: relative;
   z-index: 1;
+  max-height: 50%;
 }
 
 /* Form */
