@@ -1,10 +1,10 @@
-import {MediaItem} from 'hybrid-types/DBTypes';
+import {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {NavigateFunction, useLocation, useNavigate} from 'react-router';
 
 const Single = () => {
   const navigate: NavigateFunction = useNavigate();
   const {state} = useLocation();
-  const item: MediaItem = state.item;
+  const item: MediaItemWithOwner = state.item;
   return (
     <>
       <h3>Title: {item.title}</h3>
@@ -17,7 +17,9 @@ const Single = () => {
             <img src={item.filename} alt={item.title} />
           </div>
         ))}
-      ;<p>Description: {item.description}</p>
+      ;
+      <p>Owner: {item.username}</p>
+      <p>Description: {item.description}</p>
       <p>Media type: {item.media_type}</p>
       <p>Filesize: {item.filesize}</p>
       <button
