@@ -22,7 +22,7 @@ const Single = () => {
       <p>Description: {item.description}</p>
       <p>Media type: {item.media_type}</p>
       <p>Filesize: {item.filesize}</p>
-      <button
+      <button id="go-back-button"
         onClick={() => {
           navigate(-1);
         }}
