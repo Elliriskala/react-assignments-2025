@@ -6,7 +6,12 @@ import {
 import {fetchData} from '../lib/functions';
 import {useEffect, useState} from 'react';
 import {Credentials, RegisterCredentials} from '../types/LocalTypes';
-import {LoginResponse, UserResponse} from 'hybrid-types/MessageTypes';
+import {
+  LoginResponse,
+  MessageResponse,
+  UploadResponse,
+  UserResponse,
+} from 'hybrid-types/MessageTypes';
 
 const useMedia = () => {
   const [mediaArray, setMediaArray] = useState<MediaItemWithOwner[]>([]);
@@ -54,7 +59,56 @@ const useMedia = () => {
     getMedia();
   }, []);
 
-  return {mediaArray};
+  const postMedia = async (
+    file: UploadResponse,
+    inputs: Record<string, string>,
+    token: string,
+  ) => {
+    const media: Omit<
+      MediaItem,
+      'media_id' | 'user_id' | 'thumbnail' | 'created_at' | 'screenshots'
+    > = {
+      title: inputs.title,
+      description: inputs.description,
+      filename: file.data.filename,
+      media_type: file.data.media_type,
+      filesize: file.data.filesize,
+    };
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(media),
+    };
+
+    return await fetchData<MessageResponse>(
+      import.meta.env.VITE_MEDIA_API + '/media',
+      options,
+    );
+  };
+
+  return {mediaArray, postMedia};
+};
+
+const useFile = () => {
+  const postFile = async (file: File, token: string) => {
+    const formData = new FormData();
+    formData.append('file', file);
+    const options = {
+      method: 'POST',
+      headers: {Authorization: 'Bearer ' + token},
+      body: formData,
+    };
+
+    return await fetchData<UploadResponse>(
+      import.meta.env.VITE_UPLOAD_API + '/upload',
+      options,
+    );
+  };
+  return {postFile};
 };
 
 const useAuthentication = () => {
@@ -113,4 +167,4 @@ const useComments = () => {
   // add media/comments resource API connections here
 };
 
-export {useMedia, useUser, useComments, useAuthentication};
+export {useMedia, useUser, useComments, useAuthentication, useFile};
