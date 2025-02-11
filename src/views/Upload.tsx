@@ -1,14 +1,14 @@
-// Upload.tsx
-import {useState} from 'react';
+import {ChangeEvent, useRef, useState} from 'react';
 import useForm from '../hooks/formHooks';
 import {useFile, useMedia} from '../hooks/apiHooks';
-// import {useNavigate} from 'react-router';
+//import {useNavigate} from 'react-router';
 
 const Upload = () => {
-  const [uploading, setUploading] = useState(false);
-  const [uploadResult, setUploadResult] = useState('');
+  const [uploading, setUploading] = useState<boolean>(false);
+  const [uploadResult, setUploadResult] = useState<string>('');
   const [file, setFile] = useState<File | null>(null);
-  // const navigate = useNavigate();
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  //const navigate = useNavigate();
   const {postFile} = useFile();
   const {postMedia} = useMedia();
   const initValues = {
@@ -16,7 +16,7 @@ const Upload = () => {
     description: '',
   };
 
-  const handleFileChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = (evt: ChangeEvent<HTMLInputElement>) => {
     if (evt.target.files) {
       console.log(evt.target.files[0]);
       setFile(evt.target.files[0]);
@@ -25,22 +25,26 @@ const Upload = () => {
 
   const doUpload = async () => {
     setUploading(true);
+
+    console.log(inputs);
     try {
       const token = localStorage.getItem('token');
       if (!file || !token) {
         return;
       }
-      // upload the file to fileserver
-      const uploadResult = await postFile(file, token);
-      // post metadata to media api server
-      await postMedia(uploadResult, inputs, token);
-      // navigate('/');
-      // or notify user & clear inputs
-      setUploadResult('File uploaded successfully.');
+      // upload the file to fileserver and post metadata to media api server
+      const fileResult = await postFile(file, token);
+      await postMedia(fileResult, inputs, token);
+
+      // redirect to Home if you want
+      //navigate('/');
+
+      // OR notify user & clear inputs
+      setUploadResult('Media file uploaded!');
       resetForm();
-    } catch (error) {
-      console.log((error as Error).message);
-      setUploadResult((error as Error).message);
+    } catch (e) {
+      console.log((e as Error).message);
+      setUploadResult((e as Error).message);
     } finally {
       setUploading(false);
     }
@@ -54,7 +58,12 @@ const Upload = () => {
   const resetForm = () => {
     setInputs(initValues);
     setFile(null);
+    // use fileRef to clear file input field after upload
+    if (fileRef.current) {
+      fileRef.current.value = '';
+    }
   };
+
   return (
     <>
       <h1>Upload</h1>
@@ -87,7 +96,8 @@ const Upload = () => {
             id="file"
             accept="image/*, video/*"
             onChange={handleFileChange}
-            // handle the reset in the file name
+            // reference for useRef hook
+            ref={fileRef}
           />
         </div>
         <img
@@ -107,10 +117,9 @@ const Upload = () => {
               : true
           }
         >
-          {' '}
-          {uploading ? 'Uploading...' : 'Upload'}
+          {uploading ? 'Uploading..' : 'Upload'}
         </button>
-        <button type="reset" onClick={resetForm}>Reset</button>
+        <button onClick={resetForm} >Reset</button>
         <p>{uploadResult}</p>
       </form>
     </>

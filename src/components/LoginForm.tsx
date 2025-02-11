@@ -1,11 +1,10 @@
 import useForm from '../hooks/formHooks';
 import {Credentials} from '../types/LocalTypes';
-import { useUserContext } from '../hooks/contextHooks';
+import {useUserContext} from '../hooks/contextHooks';
 
-const LoginForm = () => {
-
+const LoginForm = (props: {toggleRegister: () => void}) => {
+  const {toggleRegister} = props;
   const {handleLogin} = useUserContext();
-
   const initValues: Credentials = {
     username: '',
     password: '',
@@ -14,8 +13,9 @@ const LoginForm = () => {
   const doLogin = async () => {
     try {
       handleLogin(inputs as Credentials);
-    } catch (e) {
-      console.log((e as Error).message);
+    } catch (error) {
+      console.error((error as Error).message);
+      // Display error to user here(?)
     }
   };
 
@@ -47,9 +47,12 @@ const LoginForm = () => {
             id="loginpassword"
             onChange={handleInputChange}
             autoComplete="current-password"
+            // value={inputs.password}
           />
         </div>
         <button type="submit">Login</button>
+        <button type="button" onClick={toggleRegister}>
+          Register</button>
       </form>
     </>
   );
