@@ -25,7 +25,6 @@ const SingleView = (props: {
           </button>
         </dialog>
       )}
-      ;
     </>
   );
 };

@@ -1,7 +1,6 @@
 import {useEffect} from 'react';
 import {Link, Outlet} from 'react-router';
-import { useUserContext } from '../hooks/contextHooks';
-
+import {useUserContext} from '../hooks/contextHooks';
 
 const Layout = () => {
   const {user, handleAutoLogin} = useUserContext();
@@ -18,28 +17,53 @@ const Layout = () => {
 
   return (
     <>
-      <h1>My app</h1>
+      <h1 className="py-2 text-center">My app</h1>
       <div>
         <nav>
-          <ul>
+          <ul className="m-0 my-4 mb-4 flex list-none justify-end rounded-2xl border-1 border-sky-600 bg-sky-200 p-0 no-underline">
             <li>
-              <Link to="/">Home</Link>
+              <Link
+                className="block p-4 text-center transition-all duration-500 ease-in-out hover:bg-sky-300"
+                to="/"
+              >
+                Home
+              </Link>
             </li>
             {user ? (
               <>
                 <li>
-                  <Link to="/profile">Profile</Link>
+                  <Link
+                    className="block p-4 text-center transition-all duration-500 ease-in-out hover:bg-sky-300"
+                    to="/profile"
+                  >
+                    Profile
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/upload">Upload</Link>
+                  <Link
+                    className="block p-4 text-center transition-all duration-500 ease-in-out hover:bg-sky-300"
+                    to="/upload"
+                  >
+                    Upload
+                  </Link>
                 </li>
                 <li>
-                  <Link to="/logout">Logout</Link>
+                  <Link
+                    className="block rounded-tr-2xl rounded-br-2xl p-4 text-center transition-all duration-500 ease-in-out hover:bg-sky-300"
+                    to="/logout"
+                  >
+                    Logout
+                  </Link>
                 </li>
               </>
             ) : (
               <li>
-                <Link to="/login">Login</Link>
+                <Link
+                  className="block rounded-tr-2xl rounded-br-2xl p-4 text-center transition-all duration-500 ease-in-out hover:bg-sky-300"
+                  to="/login"
+                >
+                  Login
+                </Link>
               </li>
             )}
           </ul>
@@ -47,7 +71,9 @@ const Layout = () => {
         <main>
           <Outlet />
         </main>
-        <footer>This is a footer</footer>
+        <footer className="m-auto w-full bg-sky-400 p-4 text-center mt-4 rounded-sm">
+          This is a footer
+        </footer>
       </div>
     </>
   );

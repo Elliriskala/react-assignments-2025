@@ -1,0 +1,174 @@
+:root {
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgb(255, 255, 255);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-image: url(background.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+/* nav */
+nav ul {
+  list-style-type: none;
+  margin: auto;
+  margin-bottom: 1em;
+  padding: 0;
+  overflow: hidden;
+  background-color: #154bfa;
+  display: flex;
+  justify-content: flex-end;
+  width: 90%;
+  border-radius: 1em;
+}
+
+nav a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #111111;
+}
+
+/* media item card */
+table {
+  background-color: #242424;
+  padding: 1em;
+  margin: auto;
+  border-radius: 1em;
+}
+
+td {
+  padding: 1rem;
+}
+
+td img {
+  width: 260px;
+  height: 200px;
+  object-fit: cover;
+}
+
+td button:hover,
+a:hover {
+  background-color: #111111;
+}
+
+td a {
+  color: white;
+  text-decoration: none;
+  background-color: #154bfa;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+}
+
+/* media item dialog */
+dialog {
+  position: fixed;
+  height: 75%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  color: rgba(255, 255, 255, 0.87);
+  width: 60%;
+  top: 10%;
+  border: none;
+}
+
+dialog img,
+video {
+  height: 70%;
+  object-fit: contain;
+}
+
+/* single view */
+img,
+video {
+  max-width: 60%;
+  position: relative;
+  z-index: 1;
+  max-height: 50%;
+}
+
+/* Form */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+form div {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+form input {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: #111111;
+}
+
+form textarea {
+  margin: 10px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: #111111;
+}
+
+button {
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #154bfa;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#go-back-button {
+  position: absolute;
+  z-index: 10;
+  top: 200px;
+  left: 140px;
+}
+
+footer {
+  margin: auto;
+  margin-top: 2rem;
+  background-color: #154bfa;
+  padding: 1em;
+  width: 90%;
+}

@@ -1,4 +1,3 @@
-import './App.css';
 import {Route, BrowserRouter as Router, Routes} from 'react-router';
 import Layout from './components/Layout';
 import Home from './views/Home';

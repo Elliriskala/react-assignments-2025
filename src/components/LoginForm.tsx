@@ -26,11 +26,14 @@ const LoginForm = (props: {toggleRegister: () => void}) => {
 
   return (
     <>
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="loginusername">Username</label>
+      <h1 className="p-4 text-center">Login</h1>
+      <form className="flex flex-col items-center justify-center rounded-md bg-sky-200 p-2"onSubmit={handleSubmit}>
+        <div className="m-2 flex w-4/5 flex-col p-2">
+          <label htmlFor="loginusername">
+            Username
+          </label>
           <input
+            className="my-2.5 rounded-md border-1 p-2.5"
             name="username"
             type="text"
             id="loginusername"
@@ -39,9 +42,12 @@ const LoginForm = (props: {toggleRegister: () => void}) => {
             // value={inputs.username}
           />
         </div>
-        <div>
-          <label htmlFor="loginpassword">Password</label>
+        <div className="flex w-4/5 flex-col p-2">
+          <label className="px-2" htmlFor="loginpassword">
+            Password
+          </label>
           <input
+            className="my-2.5 rounded-md border-1 p-2.5"
             name="password"
             type="password"
             id="loginpassword"
@@ -50,9 +56,13 @@ const LoginForm = (props: {toggleRegister: () => void}) => {
             // value={inputs.password}
           />
         </div>
-        <button type="submit">Login</button>
-        <button type="button" onClick={toggleRegister}>
-          Register</button>
+        <button
+          className="my-4 block w-2/5 rounded-2xl bg-sky-300 py-2.5 transition-all duration-500 ease-in-out hover:bg-sky-500"
+          type="submit"
+        >
+          Login
+        </button>
+        <button type="button" onClick={toggleRegister}></button>
       </form>
     </>
   );

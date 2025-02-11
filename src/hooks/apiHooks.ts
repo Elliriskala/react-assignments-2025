@@ -7,6 +7,7 @@ import {fetchData} from '../lib/functions';
 import {useEffect, useState} from 'react';
 import {Credentials, RegisterCredentials} from '../types/LocalTypes';
 import {
+  AvailableResponse,
   LoginResponse,
   MessageResponse,
   UploadResponse,
@@ -160,7 +161,25 @@ const useUser = () => {
       console.error(error);
     }
   };
-  return {getUserByToken, postRegister};
+
+  const getUsernameAvailable = async (username: string) => {
+    return await fetchData<AvailableResponse>(
+      import.meta.env.VITE_AUTH_API + '/users/username/' + username,
+    );
+  };
+
+  const getEmailAvailable = async (email: string) => {
+    return await fetchData<AvailableResponse>(
+      import.meta.env.VITE_AUTH_API + '/users/email/' + email,
+    );
+  };
+
+  return {
+    getUserByToken,
+    postRegister,
+    getUsernameAvailable,
+    getEmailAvailable,
+  };
 };
 
 const useComments = () => {
