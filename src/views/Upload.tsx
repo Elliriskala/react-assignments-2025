@@ -66,11 +66,15 @@ const Upload = () => {
 
   return (
     <>
-      <h1>Upload</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
+      <h1 className="p-4 text-center">Upload</h1>
+      <form
+        className="flex flex-col items-center justify-center rounded-md bg-sky-200 p-2"
+        onSubmit={handleSubmit}
+      >
+        <div className="m-2 flex w-4/5 flex-col p-2 font-bold">
           <label htmlFor="title">Title</label>
           <input
+            className="my-2.5 rounded-md border-1 p-2.5"
             name="title"
             type="text"
             id="title"
@@ -78,9 +82,10 @@ const Upload = () => {
             value={inputs.title}
           />
         </div>
-        <div>
+        <div className="m-2 flex w-4/5 flex-col p-2 font-bold">
           <label htmlFor="description">Description</label>
           <textarea
+            className="my-2.5 rounded-md border-1 p-2.5"
             name="description"
             rows={5}
             id="description"
@@ -88,15 +93,15 @@ const Upload = () => {
             value={inputs.description}
           ></textarea>
         </div>
-        <div>
+        <div className="m-2 flex w-4/5 flex-col p-2 font-bold">
           <label htmlFor="file">File</label>
           <input
+            className="my-2.5 rounded-md border-1 p-2.5"
             name="file"
             type="file"
             id="file"
             accept="image/*, video/*"
             onChange={handleFileChange}
-            // reference for useRef hook
             ref={fileRef}
           />
         </div>
@@ -110,6 +115,7 @@ const Upload = () => {
           width="200"
         />
         <button
+          className="mt-6 block w-1/6 rounded-2xl bg-sky-300 py-2.5 transition-all duration-500 ease-in-out hover:bg-sky-500"
           type="submit"
           disabled={
             file && inputs.title.length > 3 && inputs.description.length > 0
@@ -119,7 +125,12 @@ const Upload = () => {
         >
           {uploading ? 'Uploading..' : 'Upload'}
         </button>
-        <button onClick={resetForm} >Reset</button>
+        <button
+          className="my-2 block w-1/6 rounded-2xl bg-sky-300 py-2.5 transition-all duration-500 ease-in-out hover:bg-sky-500"
+          onClick={resetForm}
+        >
+          Reset
+        </button>
         <p>{uploadResult}</p>
       </form>
     </>

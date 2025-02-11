@@ -42,34 +42,38 @@ const MediaRow = (props: MediaItemProps) => {
       </p>
       <p>
         <Link
-          className="block m-auto mt-4 w-full cursor-pointer rounded-2xl bg-sky-300 p-2 text-center transition-all duration-300 ease-in-out hover:bg-sky-400"
+          className="m-auto mt-4 block w-full cursor-pointer rounded-2xl bg-sky-300 p-2 text-center transition-all duration-300 ease-in-out hover:bg-sky-400"
           to="/single"
           state={{item}}
         >
           Show
         </Link>
 
-        {(user?.user_id === item.user_id ||
-          user?.level_name === 'Admin' && (
-            <>
-              <button
-                onClick={() => {
-                  console.log('Modify button clicked');
-                }}
-                className="m-auto mt-2 w-full cursor-pointer rounded-2xl bg-emerald-300 p-2 text-center text-nowrap transition-all duration-300 ease-in-out hover:bg-green-400"
-              >
-                Modify
-              </button>
-              <button
-                onClick={() => {
-                  console.log('Delete button clicked');
-                }}
-                className="m-auto mt-2 w-full cursor-pointer rounded-2xl bg-red-300 p-2 text-center text-nowrap transition-all duration-300 ease-in-out hover:bg-orange-400"
-              >
-                Delete
-              </button>
-            </>
-          ))}
+        {((user && user.user_id === item.user_id) ||
+          (user && user.level_name === 'Admin')) && (
+          <>
+            <button
+              onClick={() => {
+                console.log('Modify button clicked');
+                console.log('User is admin');
+                console.log('User id:', user?.user_id);
+                console.log('Item user id:', item.user_id);
+                console.log(user.level_name);
+              }}
+              className="m-auto mt-2 w-full cursor-pointer rounded-2xl bg-emerald-300 p-2 text-center text-nowrap transition-all duration-300 ease-in-out hover:bg-green-400"
+            >
+              Modify
+            </button>
+            <button
+              onClick={() => {
+                console.log('Delete button clicked');
+              }}
+              className="m-auto mt-2 w-full cursor-pointer rounded-2xl bg-red-300 p-2 text-center text-nowrap transition-all duration-300 ease-in-out hover:bg-orange-400"
+            >
+              Delete
+            </button>
+          </>
+        )}
       </p>
     </article>
   );
