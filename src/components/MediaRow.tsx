@@ -12,7 +12,7 @@ const MediaRow = (props: MediaItemProps) => {
   const {item} = props;
 
   return (
-    <article className="m-auto mb-2 w-full rounded-md border-1 border-sky-400 bg-sky-200 p-6">
+    <article className="h-full m-auto mb-2 w-full rounded-md border-1 border-sky-400 bg-sky-200 p-6">
       <img
         className="h-72 w-full rounded-md object-cover"
         src={
