@@ -8,3 +8,5 @@
 ### Open: https://users.metropolia.fi/~ellinor/upload/
 
 ### Open: https://users.metropolia.fi/~ellinor/tailwind/
+
+### Open: https://users.metropolia.fi/~ellinor/zustand/

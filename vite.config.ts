@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
-  base: '/~ellinor/tailwind/',
+  base: '/~ellinor/zustand/',
   test: {
     environment: 'jsdom',
     globals: true,
