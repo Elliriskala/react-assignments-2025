@@ -1,6 +1,6 @@
 import {MediaItemWithOwner} from 'hybrid-types/DBTypes';
 import {NavigateFunction, useLocation, useNavigate} from 'react-router';
-import Likes from '../components/likes';
+import Likes from '../components/Likes';
 
 const Single = () => {
   const navigate: NavigateFunction = useNavigate();

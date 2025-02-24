@@ -154,7 +154,7 @@ const useUser = () => {
     }
   };
 
-  const getUserNameAvailable = async (username: string) => {
+  const getUsernameAvailable = async (username: string) => {
     return await fetchData<AvailableResponse>(
       import.meta.env.VITE_AUTH_API + '/users/username/' + username,
     );
@@ -169,7 +169,7 @@ const useUser = () => {
   return {
     getUserByToken,
     postRegister,
-    getUserNameAvailable,
+    getUsernameAvailable,
     getEmailAvailable,
   };
 };
